@@ -1,4 +1,5 @@
 var os = require('os');
+var showTime = require('../modules/TIMEformat');
 
 function getOSinfo() {
     var type = os.type();
@@ -12,9 +13,11 @@ function getOSinfo() {
     console.log('Release: ', release);
     var cpu = os.cpus()[0].model;
     console.log('CPU model: ', cpu);
-    var uptime = os.uptime();
-    console.log('Uptime: ~', (uptime / 60).toFixed(0), 'min');
     var userInfo = os.userInfo();
     console.log('User name:', userInfo.username);
     console.log('Home dir:', userInfo.homedir);
-};
+    showTime.print();
+
+}
+
+exports.print = getOSinfo;
